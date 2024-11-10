@@ -1,32 +1,66 @@
-#! /bin/bash
-#########################
-# Function to print color
-#########################
-function print_color(){
+#!/bin/bash
+#
+# Print messages in different colors to the terminal.
+#
+# This function takes a color name and a message as arguments and outputs
+# the message in the specified color using ANSI escape codes.
+#
+# Globals:
+#   None
+#
+# Arguments:
+#   $1 - Color name (green|red|white|yellow)
+#   $2 - Message to print
+#
+# Outputs:
+#   Writes colored message to stdout
+#
+# Example:
+#   print_color "green" "Success message"
+#   print_color "red" "Error message"
+#
+function print_color() {
     case $1 in
-    green)
-        color=32
-        ;;
-    red)
-        color=31
-        ;;
-    white)
-        color=37
-        ;;
-    yellow)
-        color=33
-        ;;
+        green)
+            color=32
+            ;;
+        red)
+            color=31
+            ;;
+        white)
+            color=37
+            ;;
+        yellow)
+            color=33
+            ;;
     esac
     message=$2
     echo -e "\e[${color}m${message}\e[0m"
 }
-
 #########################
-# evaluate which color to print
-# $1 is the value to evaluate
-# $2 is the value we are evaluating CPU/Memory/Disk
-#########################
-function evaluate_print_color(){
+# Evaluates a numeric value and prints a colored status message.
+#
+# Takes a numeric value and a label (e.g., "CPU", "Memory") and outputs
+# a colored status message based on thresholds:
+#   > 90: Red (Critical)
+#   > 70: Yellow (Warning)
+#   else: Green (Normal)
+#
+# Globals:
+#   None
+#
+# Arguments:
+#   $1 - Numeric value to evaluate (can be integer or float)
+#   $2 - Label for the resource being evaluated (e.g., "CPU", "Memory")
+#
+# Outputs:
+#   Writes colored status message to stdout using print_color function
+#
+# Example:
+#   evaluate_print_color "85.5" "CPU"
+#   evaluate_print_color "45.2" "Memory"
+#
+function evaluate_print_color() {
     if (( $(echo "$1 > 90" | bc -l) )); then
         print_color red "$2 Usage: Critical"
     elif (( $(echo "$1 > 70" | bc -l) )); then
@@ -78,3 +112,4 @@ top -b -o %CPU -n 1 | tail -n +6 | head -n 5
 #top 5 processes by Memory
 print_color green "Top 5 Processes by Memory"
 top -b -o %MEM -n 1 | tail -n +6 | head -n 5
+
