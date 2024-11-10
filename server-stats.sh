@@ -21,13 +21,18 @@ function print_color(){
     echo -e "\e[${color}m${message}\e[0m"
 }
 
+#########################
+# evaluate which color to print
+# $1 is the value to evaluate
+# $2 is the value we are evaluating CPU/Memory/Disk
+#########################
 function evaluate_print_color(){
     if (( $(echo "$1 > 90" | bc -l) )); then
-        print_color red $1
+        print_color red "$2 Usage: Critical"
     elif (( $(echo "$1 > 70" | bc -l) )); then
-        print_color yellow $1
+        print_color yellow "$2 Usage: Warning"
     else
-        print_color green $1
+        print_color green "$2 Usage: Normal"
     fi
 }
 
@@ -37,11 +42,8 @@ user_cpu=$(top -bn1 | grep "Cpu(s)" | awk -F ',' '{print $1}'| sed 's/%Cpu(s)://
 system_cpu=$(top -bn1 | grep "Cpu(s)" | awk -F ',' '{print $2}' | tr -dc '0-9.')
 total_cpu=$(echo "$user_cpu + $system_cpu" | bc)
 
-if (( $(echo "$total_cpu > 90" | bc -l) )); then
-    print_color red "CPU Usage: Critical" 
-else
-    print_color green "CPU Usage: Normal"
-fi
+evaluate_print_color $total_cpu "CPU"
+
 echo -e "CPU Usage: User $user_cpu System $system_cpu Total $total_cpu \n"
 
 # Memory Usage
@@ -51,11 +53,7 @@ used_memory=$(free -m | grep "Mem:" | awk '{ print $3}')
 #Calculate percentage of used memory
 used_memory_percentage=$(echo "$used_memory / $total_memory * 100" | bc)
 
-if (( $(echo "$used_memory_percentage > 80" | bc -l) )); then
-    print_color red "Memory Usage: Critical"
-else
-    print_color green "Memory Usage: Normal"
-fi
+evaluate_print_color $used_memory_percentage "Memory"
 echo "Memory Usage: Used $used_memory_percentage%"
 echo -e "Memory Info: Total $total_memory Used $used_memory \n"
 
