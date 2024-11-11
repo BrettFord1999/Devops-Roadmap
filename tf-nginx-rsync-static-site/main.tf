@@ -7,6 +7,17 @@ resource "aws_instance" "web_server" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.key_pair.key_name
+  security_groups = [aws_security_group.web_server_sg.name]
+
+  connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/key_pair")
+      host        = self.public_ip
+    }
+  provisioner "remote-exec" {
+    inline = ["echo 'Hello, World!'"]
+  }
 }
 
 resource "aws_key_pair" "key_pair" {
