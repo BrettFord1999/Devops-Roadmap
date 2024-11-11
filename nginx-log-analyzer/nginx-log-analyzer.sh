@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##############################################################
+# Script to analyze Nginx access logs
+##############################################################
+
 <<COMMENT
 Requirements:
 Top 5 IP addresses with the most requests
@@ -10,8 +14,14 @@ COMMENT
 
 # Check if log file is provided
 if [ -z "$1" ]; then
-    echo "Usage: $0 /path/to/nginx.log"
+    echo "Usage: $0 /path/to/logfile"
     exit 1
+fi
+
+# Check if head is provided
+head=$2
+if [ -z "$head" ]; then
+    head=5
 fi
 
 # Define colors
@@ -19,22 +29,50 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "\n${GREEN}Top 5 IP addresses with the most requests${NC}\n"
-# Get IP addresses and count them, with colored output
-awk '{print $1}' "$1" | sort | uniq -c | sort -nr | head -n 5 | awk -v green="$GREEN" -v blue="$BLUE" -v nc="$NC" '{printf "%s%6s%s %s%s%s\n", green, $1, nc, blue, $2, nc}'
-echo -e "${GREEN}----------------------------------------${NC}"
+##############################################################
+# print_top function    
+# pass in logfile, head, and type of analysis
+# type of analysis: ip, paths, status codes, user agents
+# print top N results with colors
+##############################################################   
 
-echo -e "\n${GREEN}Top 5 most requested paths:${NC}"
-# Get most requested paths and count them
-awk '{print $7}' "$1" | sort | uniq -c | sort -nr | head -n 5 | awk -v green="$GREEN" -v blue="$BLUE" -v nc="$NC" '{printf "%s%6s%s %s%s%s\n", green, $1, nc, blue, $2, nc}'
-echo -e "${GREEN}----------------------------------------\n"
+function print_top() {
+    case $3 in
+        "ip")  
+            field=1
+            ;;
+        "paths")
+            field=7
+            ;;
+        "status codes")
+            field=9
+            ;;
+        "user agents")
+            field=12
+            ;;
+    esac    
+    echo -e "\n${GREEN}Top $2 $3${NC}\n"
 
-echo -e "\n${GREEN}Top 5 response status codes:\n"
-# Get response status codes and count them
-awk '{print $9}' "$1" | sort | uniq -c | sort -nr | head -n 5 | awk -v green="$GREEN" -v blue="$BLUE" -v nc="$NC" '{printf "%s%6s%s %s%s%s\n", green, $1, nc, blue, $2, nc}'
-echo -e "${GREEN}----------------------------------------\n"
+    # Process log file:
+    # 1. Extract specified field
+    # 2. Sort entries
+    # 3. Count unique occurrences
+    # 4. Sort numerically in reverse order
+    # 5. Take top N results
+    # 6. Format output with colors
+    awk "{print \$$field}" "$1" | \
+        sort | \
+        uniq -c | \
+        sort -nr | \
+        head -n $2 | \
+        awk -v green="$GREEN" -v blue="$BLUE" -v nc="$NC" \
+            '{printf "%s%6s%s %s%s%s\n", green, $1, nc, blue, $2, nc}'
 
-echo -e "\n${GREEN}Top 5 user agents${NC}"
-# Get user agents and count them
-awk '{print $12}' "$1" | sort | uniq -c | sort -nr | head -n 5 | awk -v green="$GREEN" -v blue="$BLUE" -v nc="$NC" '{printf "%s%6s%s %s%s%s\n", green, $1, nc, blue, $2, nc}'
-echo -e "${GREEN}----------------------------------------\n"
+    # Print separator line
+    echo -e "${GREEN}----------------------------------------\n"
+}
+
+print_top "$1" "$2" "ip"
+print_top "$1" "$2" "paths"
+print_top "$1" "$2" "status codes"
+print_top "$1" "$2" "user agents"
