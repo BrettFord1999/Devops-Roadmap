@@ -1,14 +1,26 @@
-#! /bin/bash
+#!/bin/bash
 
-# Check if directory argument is provided
-if [ -z "$1" ]; then
-    echo "Error: Please provide a log directory"
-    exit 1
+# Self-installation logic
+SCRIPT_PATH="/usr/local/bin/log-archive-tool"
+if [ "$0" != "$SCRIPT_PATH" ]; then
+    echo "Installing log-archive-tool command..."
+    
+    # Check if running with sudo
+    if [ "$EUID" -ne 0 ]; then 
+        echo "Please run with sudo for first-time installation"
+        exit 1
+    fi
+
+    # Copy script to /usr/local/bin
+    cp "$0" "$SCRIPT_PATH"
+    chmod +x "$SCRIPT_PATH"
+    echo "Installation complete! You can now use 'log-archive-tool' command"
+    exit 0
 fi
 
-# Check if directory exists and is readable
-if [ ! -d "$1" ] || [ ! -r "$1" ]; then
-    echo "Error: Directory '$1' does not exist or is not readable"
+# Main script logic starts here
+if [ -z "$1" ]; then
+    echo "Error: Please provide a log directory"
     exit 1
 fi
 
