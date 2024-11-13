@@ -25,11 +25,11 @@ resource "aws_instance" "web_server" {
       "timeout 30 sudo systemctl status nginx",
       "echo 'Moving files...'",
       "cd /var/www/html",
-      "mv dist/* . || echo 'Move failed'",
-      "echo 'Files moved successfully'",
-      "sudo systemctl stop nginx",
-      "sudo systemctl start nginx",
-      "sudo systemctl daemon-reload"
+      #"mv dist/* . || echo 'Move failed'",
+      #"echo 'Files moved successfully'",
+      #"sudo systemctl stop nginx",
+      #"sudo systemctl start nginx",
+      #"sudo systemctl daemon-reload"
     ]
   }
 

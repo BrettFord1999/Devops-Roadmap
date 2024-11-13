@@ -1,7 +1,8 @@
-#I already have Terraform installed
-#I've already set environment variables for AWS credentials
 ssh-keygen -t rsa -b 2048 -f ~/.ssh/key_pair
 ssh -i ~/.ssh/key_pair ubuntu@SERVERPUBLICIP
+export AWS_ACCESS_KEY_ID="your_access_key"
+export AWS_SECRET_ACCESS_KEY="your_secret_key"
+
 
 <<COMMENT
 sudo apt update
