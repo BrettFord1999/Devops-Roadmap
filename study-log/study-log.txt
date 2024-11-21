@@ -1,4 +1,11 @@
 Starting log 11/19/2024
 11-19-2024
 Wrapped up DNS server project in Python where I learned about analyzing, parsing and constructing network packets.
+VPC lab completed on Kodekloud.
 Started AWS Developer Associate study. Covered VPCs, EC2, S3 and Route53. I've worked with these all before but there were some gaps covered in formal training material.
+11-20-2024
+Jenkins architecture introduction and toolset
+Worked on coding algorithms starting simple with array manipulation
+Read some pygame documentation and setup the beginning of a project
+
+
