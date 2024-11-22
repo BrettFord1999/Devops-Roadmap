@@ -7,5 +7,11 @@ Started AWS Developer Associate study. Covered VPCs, EC2, S3 and Route53. I've w
 Jenkins architecture introduction and toolset
 Worked on coding algorithms starting simple with array manipulation
 Read some pygame documentation and setup the beginning of a project
+11-21-2024
+Completed more steps on the Asteroids game. Learning a lot about classes and inheritance.
+Handling method overwrites so we can group together classes in containers and loop over them to update them with a singular method that does different things for each class
+Had an idea for a monitoring project to collect time-series data and map it
+used subprocess with Python
+Development environments are starting to be more consistent because I'm using docker and virtual environments when possible
 
 
