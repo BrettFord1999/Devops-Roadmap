@@ -17,5 +17,12 @@ Development environments are starting to be more consistent because I'm using do
 completed some functional programing concepts on boot.dev
 recursion, first class functions
 watched a video covering all keywords and soft keywords in Python
+11-23-2024
+Learned about ternary operators, nice that you can tuple unpack to set multiple variables in clean one liners
+Started building an http server
+Learned about a few different error types regarding socket connections, especially regarding timeouts and blocking
+learned about http packet creation and have started parsing out requests
+leaning more towards a functional style as much as I can in here. when building my DNS server last time I unnecessarily used classes for everything and that overcomplicated it when I could have just done everything as a function.
+
 
 
