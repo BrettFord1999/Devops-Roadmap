@@ -3,26 +3,43 @@ Starting log 11/19/2024
 Wrapped up DNS server project in Python where I learned about analyzing, parsing and constructing network packets.
 VPC lab completed on Kodekloud.
 Started AWS Developer Associate study. Covered VPCs, EC2, S3 and Route53. I've worked with these all before but there were some gaps covered in formal training material.
+
 11-20-2024
 Jenkins architecture introduction and toolset
 Worked on coding algorithms starting simple with array manipulation
 Read some pygame documentation and setup the beginning of a project
+
 11-21-2024
 Completed more steps on the Asteroids game. Learning a lot about classes and inheritance.
 Handling method overwrites so we can group together classes in containers and loop over them to update them with a singular method that does different things for each class
 Had an idea for a monitoring project to collect time-series data and map it
 used subprocess with Python
 Development environments are starting to be more consistent because I'm using docker and virtual environments when possible
+
 11-22-2024
 completed some functional programing concepts on boot.dev
 recursion, first class functions
 watched a video covering all keywords and soft keywords in Python
+
 11-23-2024
 Learned about ternary operators, nice that you can tuple unpack to set multiple variables in clean one liners
 Started building an http server
 Learned about a few different error types regarding socket connections, especially regarding timeouts and blocking
 learned about http packet creation and have started parsing out requests
 leaning more towards a functional style as much as I can in here. when building my DNS server last time I unnecessarily used classes for everything and that overcomplicated it when I could have just done everything as a function.
+Learned basics of threading in Python, it's a lot simpler than I expected
+Used this to manage multiple socket connected on my http server
+today I actually completed the whole base project for an HTTP server. I have a lot better understanding of what actually goes on with API endpoints under the hood
+in total the steps were:
+port binding
+creating response headers
+parsing requests
+creating logic depending on endpoints
+managing concurrent connections with threading
+managing files to serve file information
+creating files from POST requests
+Was great to complete this without LLM assistance. Only used documentation and stack overflow
+
 
 
 
