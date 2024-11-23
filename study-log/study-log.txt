@@ -13,5 +13,9 @@ Handling method overwrites so we can group together classes in containers and lo
 Had an idea for a monitoring project to collect time-series data and map it
 used subprocess with Python
 Development environments are starting to be more consistent because I'm using docker and virtual environments when possible
+11-22-2024
+completed some functional programing concepts on boot.dev
+recursion, first class functions
+watched a video covering all keywords and soft keywords in Python
 
 
