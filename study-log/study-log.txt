@@ -40,6 +40,10 @@ managing files to serve file information
 creating files from POST requests
 Was great to complete this without LLM assistance. Only used documentation and stack overflow
 
+11-24-2024
+boot.dev lessons
+algorithms in Python
+
 
 
 
