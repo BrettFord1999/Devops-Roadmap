@@ -44,6 +44,13 @@ Was great to complete this without LLM assistance. Only used documentation and s
 boot.dev lessons
 algorithms in Python
 
+11-25-2024
+boot.dev functional section
+Recursion, map, filtering, reduce
+function transformations, Closures, Currying
+I will need to revisit these until I can understand more use cases.
+ 
+
 
 
 
