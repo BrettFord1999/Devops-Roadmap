@@ -49,7 +49,12 @@ boot.dev functional section
 Recursion, map, filtering, reduce
 function transformations, Closures, Currying
 I will need to revisit these until I can understand more use cases.
- 
+
+11-26-2024
+Lots of boot.dev today
+finished the functional section
+Started the algorithms section
+
 
 
 
