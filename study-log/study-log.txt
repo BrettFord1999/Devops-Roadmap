@@ -55,6 +55,11 @@ Lots of boot.dev today
 finished the functional section
 Started the algorithms section
 
+11-27-2024
+binary search practice
+more Big O concepts
+
+
 
 
 
