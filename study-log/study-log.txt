@@ -64,6 +64,18 @@ more Big O concepts
 Thanksgiving
 I feel bad that I wasn't able to study
 
+11-29-2024
+bubble sort, learned and wrote an implementation of it
+
+11-30-2024
+started on static site generator in Python
+Algorithms have definitely been a wall so far so I'm going to get some momentum by completing a project
+really looking forward to starting the GO section soon. I think I'm going to enjoy that more than Python.
+
+11-1-2024
+motivation has been tough
+watched back end focused podcasts and Primeagen videos to at least stay immersed in software engineering culture.
+
 
 
 
