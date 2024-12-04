@@ -72,11 +72,15 @@ started on static site generator in Python
 Algorithms have definitely been a wall so far so I'm going to get some momentum by completing a project
 really looking forward to starting the GO section soon. I think I'm going to enjoy that more than Python.
 
-11-1-2024
+12-1-2024
 motivation has been tough
 watched back end focused podcasts and Primeagen videos to at least stay immersed in software engineering culture.
 
+12-2-2024
+Did some Powershell scripting while teaching the basics to someone.
+API calls on network devices for conditional configuration.
+Seeing as my current goals are more aligned to Devops rather than a software engineering position I'm going to move back to KodeKloud.
 
-
-
+12-3-2024
+ServiceNow developer study, watching the full course video from Saasnow on Youtube.
 
